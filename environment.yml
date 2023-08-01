@@ -1,0 +1,17 @@
+name: PlaneWaveGAN
+channels:
+  - defaults
+dependencies:
+  - python=3.9
+  - scikit-learn
+  - click
+  - numpyro
+  - h5py
+  - cvxpy
+  - librosa
+  - cudnn=8.1.0
+  - cudatoolkit=11.2
+  - tensorflow-probability
+  - pyyaml
+  - jupyter
+  - matplotlib
