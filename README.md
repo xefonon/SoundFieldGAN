@@ -1,7 +1,7 @@
 Generative adversarial networks with physical sound field priors
 ================================================
 
-This repository contains the code for the paper [Generative adversarial networks with physical sound field priors]() accepted for publishication in The Journal of the Acoustical Society of America (2023).
+This repository contains the code for the paper [Generative adversarial networks with physical sound field priors]() accepted for publication in The Journal of the Acoustical Society of America (2023).
 
 Abstract
 --------------------
