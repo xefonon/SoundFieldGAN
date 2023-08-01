@@ -1,0 +1,49 @@
+batch_size:
+  desc: Training batch size
+  value: 32
+optimizer:
+  desc: Which optimization algorithm to use (optimizer - e.g. Adam, RMSprop, etc.)
+  value: 'adam'
+lr:
+  desc: Learning rate for optimizer
+  value: 0.0004
+model_name:
+  desc: Name of model
+  value: 'AE_data_augmentation'
+notes:
+  desc: notes in wandb (summary of model criteria)
+  value: 'Real valued Conv AE trained with real + simulated data (Laplacian prior)'
+
+# Data generation params
+subsample_ratio_mask:
+  desc: decimate measurements by this ratio (practically probability for iid Bernoulli entries)
+  value: .23
+grid_dimension:
+  desc: Dimension of square grid (plane) so that the number of microphones is [grid_dimension x grid_dimension]
+  value: 21
+sample_rate:
+  desc: Sampling rate of 'audio' needed to form a uniformly spaced frequency vector
+  value: 16000
+NFFT:
+  desc: 2 x Size of frequency vector
+  value: 16384
+n_plane_waves:
+  desc: Number of plane waves used for plane wave decomposition (should not be changed as generator output shape depends on this)
+  value: 4096
+avg_snr:
+  desc: Median signal-to-noise ratio from which a uniform SNR is sampled so that SNR ~ U(avg_snr - 5, avg_snr + 5)
+  value: 30
+use_gaussian_prior:
+  desc: Use Gaussian prior for plane wave coefficient generation
+  value: True
+
+# Transfer learning params
+real_data_dir:
+  desc: Data directory containing real measured impulse responses for transfer learning
+  value: '../Transfer_learning_data'
+transfer_learning:
+  desc: Whether or not to use transfer learning and hence, real impulse responses for GAN training
+  value: False
+augmented_dset:
+  desc: Whether or not to use real data for training data augmentation
+  value: False

@@ -1,0 +1,92 @@
+batch_size:
+  desc: Training batch size
+  value: 2
+optimizer:
+  desc: Which optimization algorithm to use (optimizer - e.g. Adam, RMSprop, etc.)
+  value: 'adam'
+learning_rate:
+  desc: Learning rate for optimizer
+  value: 0.0002
+latent_dim:
+  desc: dimension of latent variable z (e.g. typically k = 100)
+  value: 128
+discriminator_extra_steps:
+  desc: Discriminator updates per generator updates
+  value: 1
+gradient_penalty_weight:
+  desc: Weight for gradient penalty (WGAN) loss term
+  value: 10.
+model_name:
+  desc: Name of model
+  value: 'RaGAN_normalised_planar2_gmm'
+notes:
+  desc: notes in wandb (summary of model criteria)
+  value: 'Only Dcoeff discriminator and standardized data and mixture of Gaussians for prior'
+injective_constraint:
+  desc: Apply constraint allowing for injective mapping of latent space to data distribution
+  value: False
+
+# Data generation params
+grid_dimension:
+  desc: Dimension of square grid (plane) so that the number of microphones is [grid_dimension x grid_dimension]
+  value: 21
+sample_rate:
+  desc: Sampling rate of 'audio' needed to form a uniformly spaced frequency vector
+  value: 16000
+NFFT:
+  desc: 2 x Size of frequency vector
+  value: 16384
+n_plane_waves:
+  desc: Number of plane waves used for plane wave decomposition (should not be changed as generator output shape depends on this)
+  value: 4096
+snr_lims:
+  desc: Median signal-to-noise ratio from which a uniform SNR is sampled so that SNR ~ U(avg_snr - 5, avg_snr + 5)
+  value: [15, 40]
+use_gaussian_prior:
+  desc: Use Gaussian prior for plane wave coefficient generation
+  value: False
+# network type
+complex_network:
+  desc: Use complex valued network as G and D
+  value: False
+fc_network:
+  desc: Use fully connected generator network
+  value: False
+use_freq_label:
+  desc: condition networks on frequency value
+  value: False
+use_bn:
+  desc: batch norm in generator
+  value: True
+use_sn:
+  desc: spectral norm in discriminator and generator
+  value: False
+use_ragan:
+  desc: use relativistic average gan loss
+  value: True
+
+# Transfer learning params
+real_data_dir:
+  desc: Data directory containing real measured impulse responses for transfer learning
+  value: '../Transfer_learning_data'
+transfer_learning:
+  desc: Whether or not to use transfer learning and hence, real impulse responses for GAN training
+  value: False
+augmented_dset:
+  desc: Whether or not to use real data for training data augmentation
+  value: False
+last_layer_activation:
+  desc: Activation function for last layer of generator
+  value: None
+normalize_data:
+  desc: Normalize real data to have unit norm
+  value: True
+use_planar_discriminator:
+  desc: Use discriminator trained on planar sound fields
+  value: True
+use_coeff_discriminator:
+  desc: Use discriminator trained on coefficients
+  value: False
+sph_harm_order:
+  desc: Order of spherical harmonics used for spherical harmonic decomposition
+  value: 14
